@@ -25,7 +25,7 @@
 	{% if user.is_authenticated %}
 		<div class="title" style="background-color:#0097a7;margin-top:12px"> Hello, {{ user.username }} </div>
 	{% else %}
-		<div class="title" style="background-color:#0097a7;margin-top:12px"> Hello, Christopher </div>
+		<div class="title" style="background-color:#0097a7;margin-top:12px"> Hello, {{username}} </div>
 	{% endif %}
 
 	<div class="subtitle" style="background-color:#0097a7;color:white;margin-top:12px"> Start a new search 

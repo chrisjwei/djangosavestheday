@@ -104,9 +104,12 @@ def about(request):
 def dashboard(request):
     """Renders the about page."""
     assert isinstance(request, HttpRequest)
+    context = {}
+    if 'username' in request.POST:
+        context['username'] = request.POST['username']
     return render(
         request,
-        'app/dashboard.html')
+        'app/dashboard.html',context)
 
 def fact(request,drugname):
     assert isinstance(request, HttpRequest)
