@@ -11,12 +11,12 @@
 <div class="banner">
 	<div class="logo">
 		<a href="/index.html">
-		<img border="0" width="150px" src="amber_light.svg">
+		<img border="0" width="150px" src="static/app/content/amber_light.svg">
 		</a>
   </div>
   <ul id="menu">
-  	<a href="#"><li>ABOUT</li></a>
-  	<a href="#"><li>DASHBOARD</li></a>
+  	<a href="/about.html"><li>ABOUT</li></a>
+  	<a href="/dashboard.html"><li>DASHBOARD</li></a>
   </ul>
   <div class="overlay" id="one">
 	  <center>
@@ -28,13 +28,17 @@
   <div class="overlay" id="two" style="background-color:#00bcd4;">
 	  Search for your medicine and compare ratings between different producers.
 	  <div style="margin-top:16px">
-			<input type="text" placeholder="advil, acetaminophin, mylan" id="searchbar" size="44"></input>
-			<a onclick="" href="#"><div class="amber_button" style="margin-left:10px;">SEARCH</div></a><br>
+	  <form action="/results" method="POST">
+	  	{% csrf_token %}
+			<input type="text" name="query" placeholder="advil, acetaminophin, mylan" id="searchbar" size="42" required></input>
+			<input type="submit" value="SEARCH"></input>
+			<br>
+		</form>
 		</div>
 		<hr>
-		<a href="#" class="small_link">LOGIN /</a> 
-		<a href="#" class="small_link">SIGN UP /</a>
-		<a href="#" class="small_link">LEARN MORE</a>
+		<a href="dashboard" class="small_link">LOGIN /</a> 
+		<a href="dashboard" class="small_link">SIGN UP /</a>
+		<a href="about" class="small_link">LEARN MORE</a>
   </div>
 
 </div>

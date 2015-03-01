@@ -2,8 +2,20 @@
 	margin:0px;
 	padding:0px;
 	border:0px;
-
 }
+
+input[type=submit]{
+	color:white;
+	padding:10px 20px 10px 20px;
+	clear:both;
+	background-color:#ffc107;
+	display:inline-block;
+	font-weight:600;
+	font-size:inherit;
+	font-family:inherit;
+	margin-left:4px;
+}
+
 a{
 	text-decoration: none;
 	color: inherit;
