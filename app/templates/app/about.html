@@ -1,10 +1,43 @@
-{% extends "app/layout.html" %}
+<html>
+<head>
+	<title>Amber</title>
+	<link rel="stylesheet" type="text/css" href="global.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+	<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+</head>
+<body>
+<div class="header">
+	<div class="container">
+		<div class="logo">
+			<a href="/index.html">
+			<img border="0" width="150px" src="amber_light.svg">
+			</a>
+	  </div>
+	  <ul id="menu">
+	  	<a href="#"><li>ABOUT</li></a>
+	  	<a href="#"><li>DASHBOARD</li></a>
+	  </ul>
+  </div>
+</div>
+<div class="container" style="background-color:#ff6f00;margin-top:16px;">
+	<div class="title">Not all medicines are created equal...</div>	
+</div>
+<div class="container" style="background-color:white;margin-top:16px;">
+	<div class="subtitle">What's inside that little amber bottle anyways?</div>
+	<img src="about_info.svg" width="200px" align="left" style="margin:0 16 16 16px;">
+	<p class="description">Turns out, just like anything else, prescription and over the counter drugs vary in quality from producer to producer. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sem in quam auctor interdum. Suspendisse id ultrices diam. In quis tellus quam. In pretium sodales suscipit. Nullam at porta libero, dictum suscipit odio. Praesent pretium in tortor et euismod. Sed at vestibulum tortor. Proin at lectus augue. Duis metus dolor, sollicitudin non ipsum ut, finibus sagittis lorem. Vivamus arcu magna, maximus in maximus sed, placerat ac felis. Nullam vestibulum sapien vel erat gravida, in posuere ligula rutrum. Mauris at gravida mi.
+	</p>
 
-{% block content %}
+	<p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sem in quam auctor interdum. Suspendisse id ultrices diam. In quis tellus quam. In pretium sodales suscipit. Nullam at porta libero, dictum suscipit odio. Praesent pretium in tortor et euismod. Sed at vestibulum tortor. Proin at lectus augue. Duis metus dolor, sollicitudin non ipsum ut, finibus sagittis lorem. Vivamus arcu magna, maximus in maximus sed, placerat ac felis. Nullam vestibulum sapien vel erat gravida, in posuere ligula rutrum. Mauris at gravida mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean et sem in quam auctor interdum. Suspendisse id ultrices diam. In quis tellus quam.
+	</p>
+</div>
+<div class="footer">
+		&nbsp;<br>
+		A MylanHack 2015 Project by Chris Wei, Ally Sorge<br>
+		<img src="mylan_logo.svg">
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
 
-<h2>{{ title }}.</h2>
-<h3>{{ message }}</h3>
-
-<p>Use this area to provide additional information.</p>
-
-{% endblock %}
+</html>

@@ -1,0 +1,38 @@
+.results_container{
+	margin:10px;
+	padding:20px;
+	width:960px;
+	margin-left: auto;
+	margin-right:auto;
+	background-color:white;
+}
+
+td, th{
+	font-size:16px;
+	padding:5 10 5 10px;
+	text-align: center;
+}
+
+.search_query{
+	margin:30 0 10 0px;
+	padding:20px;
+	width:960px;
+	margin-left: auto;
+	margin-right:auto;
+	background-color:#ff6f00;
+	font-size:24px;
+	color:white;
+}
+
+.entry_name{
+	font-size:16px;
+}
+.entry_active{
+	font-size:16px;
+	color:gray;
+}
+.entry_producer{
+	margin-left:16px;
+	font-weight:700;
+	font-size:16px;
+}

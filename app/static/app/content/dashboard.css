@@ -1,0 +1,32 @@
+.pillbox ul{
+	margin:0px;
+	padding:0px;
+  list-style-type: none;
+}
+
+.pillbox li{
+	display:inline-block;
+}
+
+.pillbox .drug_title{
+	font-size:24px;
+	font-weight:700;
+	color:white;
+	position: relative;
+	left:8px;
+}.pillbox .drug_active{
+	position: relative;
+	left:8px;
+}
+.pillbox .drug_img{
+	display:inline-block;
+	float:left;
+	
+}
+
+.pill{
+	background-color:#ffb300;
+	width:200px;
+	padding:10px;
+	margin:12px 12px 12px 0px;
+}
