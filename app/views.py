@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
+from django.core.urlresolvers import reverse
 from datetime import datetime
 from django.contrib import auth
 from app.models import *
@@ -15,6 +16,16 @@ from django.contrib.auth.models import User
 import sqlite3
 import re
 
+def auth_view(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = auth.authenticate(username = username, password = password)      
+
+    if user is not None:
+        auth.login(request, user)
+        return HttpResponseRedirect(reverse("app/index.html"))
+    else:
+        return HttpResponseRedirect("app/index.html")
 
 def logout(request):
     auth.logout(request)
@@ -34,15 +45,7 @@ def register(request):
     })
 
 def signin(request):
-    #username = request.POST.get('username', '')
-    #password = request.POST.get('password', '')
-    #user = auth.authenticate(username=username, password=password)
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect("app/dashboard.html")
-    return render(request, "app/register.html", {
-        'form': form,
+    return render(request, "app/signin.html")
 
 def cleanQuery(sql):
     return re.sub(r'\W+', '', sql)
