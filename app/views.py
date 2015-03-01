@@ -16,10 +16,10 @@ import sqlite3
 import re
 
 
-def logout_view(request):
+def logout(request):
     auth.logout(request)
     # Redirect to a success page.
-    return HttpResponseRedirect("/app/index")
+    return HttpResponseRedirect("app/index.html")
 
 def register(request):
     if request.method == 'POST':
@@ -33,18 +33,16 @@ def register(request):
         'form': form,
     })
 
-def login_view(request):
-    username = request.POST.get('username', '')
-    password = request.POST.get('password', '')
-    user = auth.authenticate(username=username, password=password)
-    if user is not None and user.is_active:
-        # Correct password, and the user is marked "active"
-        auth.login(request, user)
-        # Redirect to a success page.
-        return HttpResponseRedirect("/app/dashboard")
-    else:
-        # Show an error page
-        return HttpResponseRedirect("/app/index/")
+def signin(request):
+    #username = request.POST.get('username', '')
+    #password = request.POST.get('password', '')
+    #user = auth.authenticate(username=username, password=password)
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect("app/dashboard.html")
+    return render(request, "app/register.html", {
+        'form': form,
 
 def cleanQuery(sql):
     return re.sub(r'\W+', '', sql)
