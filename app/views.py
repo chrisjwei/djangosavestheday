@@ -2,6 +2,9 @@
 Definition of views.
 """
 
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
@@ -10,6 +13,19 @@ from app.models import *
 from django.contrib.auth.models import User
 import sqlite3
 import re
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            return HttpResponseRedirect("/dashboard/")
+    else:
+        form = UserCreationForm()
+    return render(request, "app/register.html", {
+        'form': form,
+    })
 
 def cleanQuery(sql):
     return re.sub(r'\W+', '', sql)
