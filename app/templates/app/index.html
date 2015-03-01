@@ -8,35 +8,6 @@
 
 </head>
 <body>
-<div class="banner">
-	<div class="logo">
-		<a href="/index.html">
-		<img border="0" width="150px" src="static/app/content/amber_light.svg">
-		</a>
-  </div>
-  <ul id="menu">
-  	<a href="/about.html"><li>ABOUT</li></a>
-  	<a href="/dashboard.html"><li>DASHBOARD</li></a>
-  </ul>
-  <div class="overlay" id="one">
-	  <center>
-	  <div class="title">What's really in your medicine?</div>
-	  <a onclick="indexTransition()" href="#">
-	  <div class="amber_button" style="margin-top:16px;">GET STARTED</div></a>
-	  </center>
-  </div>
-  <div class="overlay" id="two" style="background-color:#00bcd4;">
-	  Search for your medicine and compare ratings between different producers.
-	  <div style="margin-top:16px">
-	  <form action="/results" method="POST">
-	  	{% csrf_token %}
-			<input type="text" name="query" placeholder="advil, acetaminophin, mylan" id="searchbar" size="42" required></input>
-			<input type="submit" value="SEARCH"></input>
-			<br>
-		</form>
-		</div>
-		<hr>
-
 <script>
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -117,7 +88,41 @@
     });
   }
 </script>
+<div class="banner">
+	<div class="logo">
+		<a href="/index.html">
+		<img border="0" width="150px" src="static/app/content/amber_light.svg">
+		</a>
+  </div>
+  <ul id="menu">
+  	<a href="/about.html"><li>ABOUT</li></a>
+  	<a href="/dashboard.html"><li>DASHBOARD</li></a>
+  </ul>
+  <div class="overlay" id="one">
+	  <center>
+	  <div class="title">What's really in your medicine?</div>
+	  <a onclick="indexTransition()" href="#">
+	  <div class="amber_button" style="margin-top:16px;">GET STARTED</div></a>
+	  </center>
+  </div>
+  <div class="overlay" id="two" style="background-color:#00bcd4;">
+	  Search for your medicine and compare ratings between different producers.
+	  <div style="margin-top:16px">
+	  <form action="/results" method="POST">
+	  	{% csrf_token %}
+			<input type="text" name="query" placeholder="advil, acetaminophin, mylan" id="searchbar" size="42" required></input>
+			<input type="submit" value="SEARCH"></input>
+			<br>
+		</form>
+		</div>
+		<hr>
 
+
+    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div><br>
 		<a href="signin" class="small_link">LOGIN /</a> 
 		<a href="register" class="small_link">SIGN UP /</a>
 		<a href="about" class="small_link">LEARN MORE</a>
