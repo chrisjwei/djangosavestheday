@@ -9,11 +9,17 @@ from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
+from django.contrib import auth
 from app.models import *
 from django.contrib.auth.models import User
 import sqlite3
 import re
 
+
+def logout_view(request):
+    auth.logout(request)
+    # Redirect to a success page.
+    return HttpResponseRedirect("/app/index")
 
 def register(request):
     if request.method == 'POST':
@@ -26,6 +32,19 @@ def register(request):
     return render(request, "app/register.html", {
         'form': form,
     })
+
+def login_view(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = auth.authenticate(username=username, password=password)
+    if user is not None and user.is_active:
+        # Correct password, and the user is marked "active"
+        auth.login(request, user)
+        # Redirect to a success page.
+        return HttpResponseRedirect("/app/dashboard")
+    else:
+        # Show an error page
+        return HttpResponseRedirect("/app/index/")
 
 def cleanQuery(sql):
     return re.sub(r'\W+', '', sql)

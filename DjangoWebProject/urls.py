@@ -18,20 +18,21 @@ urlpatterns = patterns('',
     url(r'^results', 'app.views.results', name='results'),
     url(r'^dashboard', 'app.views.dashboard', name='dashboard'),
     url(r'^register', 'app.views.register', name='register'),
+    url(r'^login', 'app.views.login', name='login'),
     url(r'^about', 'app.views.about', name='about'),
     url(r'^fact/(?P<drugname>\w+)', 'app.views.fact'),
-    url(r'^login/$',
-        'django.contrib.auth.views.login',
-        {
-            'template_name': 'app/login.html',
-            'authentication_form': BootstrapAuthenticationForm,
-            'extra_context':
-            {
-                'title':'Log in',
-                'year':datetime.now().year,
-            }
-        },
-        name='login'),
+    # url(r'^login/$',
+      #  'django.contrib.auth.views.login',
+       # {
+          #  'template_name': 'app/login.html',
+        #    'authentication_form': BootstrapAuthenticationForm,
+         #   'extra_context':
+           # {
+             #   'title':'Log in',
+            #    'year':datetime.now().year,
+            #}
+        #},
+        #name='login'),
     url(r'^logout$',
         'django.contrib.auth.views.logout',
         {

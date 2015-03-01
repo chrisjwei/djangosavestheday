@@ -22,17 +22,24 @@
   </div>
 </div>
 <div class="container">
+  {% block content %}
 
-{% block content %}
-  <div class="title">Create an account</div>
+  {% if form.errors %}
+    <p class="error">Sorry, that's not a valid username or password</p>
+  {% endif %}
 
-  <form action="/login" method="post">
-      {{ form.as_p }}
-      {% csrf_token %}
-      <input type="submit" value="Create the account">
+  <form action="/dashboard" method="post">
+    {% csrf_token %}
+    <label for="username">User name:</label>
+    <input type="text" name="username" value="" id="username">
+    <label for="password">Password:</label>
+    <input type="password" name="password" value="" id="password">
+
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next|escape }}" />
   </form>
 
-{% endblock %}
+  {% endblock %}
 
 </div>
 
