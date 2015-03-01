@@ -17,14 +17,16 @@ urlpatterns = patterns('',
     url(r'^index.html', 'app.views.home', name='home'),
     url(r'^results', 'app.views.results', name='results'),
     url(r'^dashboard', 'app.views.dashboard', name='dashboard'),
+    url(r'^register', 'app.views.register', name='register'),
+    url(r'^signin', 'app.views.signin', name='signin'),
     url(r'^about', 'app.views.about', name='about'),
     url(r'^fact/(?P<drugname>\w+)', 'app.views.fact'),
     url(r'^login/$',
-        'django.contrib.auth.views.login',
-        {
-            'template_name': 'app/login.html',
-            'authentication_form': BootstrapAuthenticationForm,
-            'extra_context':
+      'django.contrib.auth.views.login',
+         {
+          'template_name': 'app/login.html',
+           'authentication_form': BootstrapAuthenticationForm,
+           'extra_context':
             {
                 'title':'Log in',
                 'year':datetime.now().year,

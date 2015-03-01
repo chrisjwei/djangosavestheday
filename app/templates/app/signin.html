@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>Amber</title>
+    <link rel="stylesheet" type="text/css" href="/static/app/content/global.css">
+    <link rel="stylesheet" type="text/css" href="/static/app/content/dashboard.css">
+    <link rel="icon" href="/static/app/content/favicon.ico" type="image/x-icon"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="/index.html">
+            <img border="0" width="150px" src="/static/app/content/amber_light.svg">
+            </a>
+      </div>
+      <ul id="menu">
+        <a href="/about"><li>ABOUT</li></a>
+        <a href="/dashboard"><li>DASHBOARD</li></a>
+      </ul>
+  </div>
+</div>
+<div class="container">
+  {% block content %}
+
+  {% if form.errors %}
+    <p class="error">Sorry, that's not a valid username or password</p>
+  {% endif %}
+
+  <form action="/dashboard" method="post">
+    {% csrf_token %}
+    <label for="username">User name:</label>
+    <input type="text" name="username" value="" id="username">
+    <label for="password">Password:</label>
+    <input type="password" name="password" value="" id="password">
+
+    <input type="submit" value="signin" />
+    <input type="hidden" name="next" value="{{ next|escape }}" />
+  </form>
+
+  {% endblock %}
+
+</div>
+
+<div class="footer">
+    <div class="container">
+        &nbsp;<br>
+        Amber: a Mylan Hackathon 2015 Project by Ally Sorge, Chris Wei, and Maggie Yu<br>
+        <img src="/static/app/content/mylan_logo.svg">
+    </div>
+    </div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="script.js"></script>
+</body>
+
+</html>

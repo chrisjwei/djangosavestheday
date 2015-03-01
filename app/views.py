@@ -2,14 +2,50 @@
 Definition of views.
 """
 
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.template import RequestContext
+from django.core.urlresolvers import reverse
 from datetime import datetime
+from django.contrib import auth
 from app.models import *
 from django.contrib.auth.models import User
 import sqlite3
 import re
+
+def auth_view(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = auth.authenticate(username = username, password = password)      
+
+    if user is not None:
+        auth.login(request, user)
+        return HttpResponseRedirect(reverse("app/index.html"))
+    else:
+        return HttpResponseRedirect("app/index.html")
+
+def logout(request):
+    auth.logout(request)
+    # Redirect to a success page.
+    return HttpResponseRedirect("app/index.html")
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            return HttpResponseRedirect("/dashboard/")
+    else:
+        form = UserCreationForm()
+    return render(request, "app/register.html", {
+        'form': form,
+    })
+
+def signin(request):
+    return render(request, "app/signin.html")
 
 def cleanQuery(sql):
     return re.sub(r'\W+', '', sql)
