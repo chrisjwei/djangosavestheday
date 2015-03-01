@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 import sqlite3
 import re
 
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
