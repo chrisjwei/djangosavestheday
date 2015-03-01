@@ -38,6 +38,7 @@
 			<th> Name</th>
 			<th> Active Ingredient</th>
 			<th> Dosage </th>
+			<th> Mkt Status </th>
 			<th> More Info</th>
 		</tr>
 		{% for entry in result %}
@@ -46,6 +47,16 @@
 			<td> {{entry.7}} </td>
 			<td> {{entry.8}} </td>
 			<td> {{entry.3}}</td>
+			<td> {% if entry.4 == "1"%}
+					   Perscription
+			     {% elif entry.4 == "2" %}
+			       OTC
+			     {% elif entry.4 == "3" %}
+			       Discont.
+			     {% else %}
+			       Tentative
+			     {% endif %}
+			</td>
 			<td> <a href=fact/{{entry.7}}-{{entry.8}}>+</a> </td>
 		</tr>
 		{% endfor %}
@@ -63,7 +74,7 @@
 	</div>
 </div>
 <script src="/static/app/scripts/jquery-1.11.2.min.js"></script>
-<script src="/static/app/content/script.js"></script>
+
 </body>
 
 </html>
